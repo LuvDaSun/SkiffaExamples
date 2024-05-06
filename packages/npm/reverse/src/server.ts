@@ -28,7 +28,7 @@ async function main() {
         path: path.join(projectRoot, "bundled", "client.js"),
       },
       "/client.js.map": {
-        contentType: "application/javascript",
+        contentType: "application/json",
         path: path.join(projectRoot, "bundled", "client.js.map"),
       },
       "/favicon.ico": false,

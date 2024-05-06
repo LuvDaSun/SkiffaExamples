@@ -3,10 +3,19 @@ import * as api from "reverse-api";
 
 // all of this should move to oa42-lib
 
+/**
+ * Configure static files to serve, of, when false. Server an empty (204) response.
+ */
 export interface ServeConfiguration {
   [path: string]:
     | {
+        /**
+         * Path of the file to serve
+         */
         path: string;
+        /**
+         * content type to serve (for example, text/html or application/javascript)
+         */
         contentType: string;
       }
     | false;
