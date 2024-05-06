@@ -1,8 +1,8 @@
 {
   "folders": [
     {
-      "name": "npm/common",
-      "path": "packages/npm/common",
+      "name": "npm/shared",
+      "path": "packages/npm/shared",
     },
     {
       "name": "npm/reverse",

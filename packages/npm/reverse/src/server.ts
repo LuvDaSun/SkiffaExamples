@@ -1,31 +1,19 @@
-import { reverse, waitForSignal } from "common";
 import fs from "fs/promises";
 import path from "path";
 import * as api from "reverse-api";
+import * as shared from "shared";
+import * as operationHandlers from "./operation-handlers/index.js";
 import { projectRoot } from "./root.js";
 
 main();
 
 // entrypoint for the server
 async function main() {
-  // create and configure server
-
+  // create the server
   const server = new api.Server();
-  // register the reverse operation
-  server.registerReverseOperation(async (incomingRequest) => {
-    // get the text we want to reverse
-    const originalText = await incomingRequest.value();
 
-    // reverse the text
-    const reversedText = reverse(originalText);
-
-    // return the reversed text to the client
-    return {
-      status: 200,
-      contentType: "text/plain",
-      value: () => reversedText,
-    };
-  });
+  // register all operations
+  server.registerOperations(operationHandlers);
 
   // serve a static file (will be generic middleware in the future)
   server.registerMiddleware(async (request, next) => {
@@ -93,7 +81,7 @@ async function main() {
     console.info(`Server started (${listener.port})`);
 
     // wait for a user to send a signal and eventually stop listening.
-    await waitForSignal("SIGINT", "SIGTERM");
+    await shared.waitForSignal("SIGINT", "SIGTERM");
 
     console.info("Stopping server...");
 

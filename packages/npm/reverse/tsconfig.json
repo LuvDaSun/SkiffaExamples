@@ -10,5 +10,5 @@
     "lib": ["ES2023", "DOM"]
   },
   "include": ["src/**/*"],
-  "references": [{ "path": "../common" }]
+  "references": [{ "path": "../shared" }]
 }

@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@types/node": "^18.19.31",
-    "common": "^0.1.0",
-    "reverse-api": "^0.1.0"
+    "shared": "file://../shared",
+    "reverse-api": "file://../reverse-api"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
