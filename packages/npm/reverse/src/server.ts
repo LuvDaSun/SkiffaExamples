@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import * as api from "reverse-api";
 import * as shared from "shared";
+import * as middleware from "./middleware/index.js";
 import * as operationHandlers from "./operation-handlers/index.js";
 import { projectRoot } from "./root.js";
 
@@ -14,6 +15,25 @@ async function main() {
 
   // register all operations
   server.registerOperations(operationHandlers);
+
+  // serve some static files
+  server.registerMiddleware(
+    middleware.serve({
+      "/": {
+        contentType: "text/html",
+        path: path.join(projectRoot, "public", "index.html"),
+      },
+      "/client.js": {
+        contentType: "application/javascript",
+        path: path.join(projectRoot, "bundled", "client.js"),
+      },
+      "/client.js.map": {
+        contentType: "application/javascript",
+        path: path.join(projectRoot, "bundled", "client.js.map"),
+      },
+      "/favicon.ico": false,
+    }),
+  );
 
   // serve a static file (will be generic middleware in the future)
   server.registerMiddleware(async (request, next) => {
