@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@types/node": "^18.19.31",
-    "reverse-api": "^0.1.0"
+    "reverse-api": "^0.1.0",
+    "common": "^0.1.0"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.4",
-    "typescript": "^5.4.5",
-    "oa42-generator": "^0.9.27"
+    "typescript": "^5.4.5"
   },
   "engines": {
     "node": ">=18"

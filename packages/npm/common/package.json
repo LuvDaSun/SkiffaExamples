@@ -1,0 +1,37 @@
+{
+  "name": "common",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./bundled/main.cjs",
+  "module": "./bundled/main.js",
+  "types": "./typed/main.d.ts",
+  "exports": {
+    ".": {
+      "require": "./bundled/main.cjs",
+      "import": "./bundled/main.js",
+      "types": "./typed/main.d.ts"
+    }
+  },
+  "files": [
+    "./typed/**",
+    "./bundled/**"
+  ],
+  "scripts": {
+    "prepack": "tsc",
+    "pretest": "tsc",
+    "prestart": "tsc",
+    "build": "tsc",
+    "test": "node --test ./transpiled/**/*.test.js"
+  },
+  "dependencies": {
+    "@types/node": "^18.19.31"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

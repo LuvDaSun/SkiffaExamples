@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": "npm/common",
+      "path": "packages/npm/common",
+    },
+    {
       "name": "npm/reverse",
       "path": "packages/npm/reverse",
     },

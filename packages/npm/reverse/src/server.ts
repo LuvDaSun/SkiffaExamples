@@ -1,6 +1,5 @@
+import { reverse, waitForSignal } from "common";
 import * as api from "reverse-api";
-import { reverse } from "./reverse.js";
-import { waitForSignal } from "./signal.js";
 
 main();
 
