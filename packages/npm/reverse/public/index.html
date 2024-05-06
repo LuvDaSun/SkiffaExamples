@@ -5,8 +5,34 @@
     <title>Reverse</title>
     <script src="/client.js"></script>
     <style>
+      * {
+        font-size: inherit;
+        color: inherit;
+      }
+      button {
+        color: black;
+        background-color: #ddd;
+      }
+      body {
+        background-color: white;
+        color: #222;
+        font-size: 100px;
+      }
       body.busy {
         opacity: 0.5;
+      }
+      form {
+        width: 50%;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: row;
+      }
+      form > input {
+        flex-grow: 1;
+      }
+      form > * {
+        border: 2px solid black;
+        margin: -1px;
       }
     </style>
   </head>
