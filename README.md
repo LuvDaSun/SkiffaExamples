@@ -6,7 +6,7 @@ This repository contains examples that you may use as a starting point for using
 
 - reverse, a very minimal API that reverses a string.
 
-  [specification](specifications/reverse-api/yaml), [npm](packages/npm/reverse-api)
+  [Specification](specifications/reverse-api.yaml), [Node.js](packages/npm/reverse)
 
 ## Node.js (npm)
 
