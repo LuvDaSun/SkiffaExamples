@@ -10,7 +10,7 @@
     "spelling": "cspell",
     "formatting": "prettier --check *",
     "generate": "node ./scripts/generate.js",
-    "postinstall": "node ./scripts/postinstall.js"
+    "preinstall": "node ./scripts/preinstall.js"
   },
   "devDependencies": {
     "cspell": "^8.8.0",
