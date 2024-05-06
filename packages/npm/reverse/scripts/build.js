@@ -9,6 +9,6 @@ const projectRoot = path.resolve(dirname, "..");
 
 const options = { shell: true, stdio: "inherit", env: process.env };
 
-cp.execFileSync("tsc", ["--project", path.resolve(projectRoot, "tsconfig.json")], options);
+cp.execFileSync("tsc", ["--build"], options);
 
 cp.execFileSync("rollup", ["--config", path.resolve(projectRoot, "rollup.config.js")], options);

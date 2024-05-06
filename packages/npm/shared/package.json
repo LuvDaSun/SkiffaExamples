@@ -16,10 +16,10 @@
     "./bundled/**"
   ],
   "scripts": {
-    "prepack": "tsc",
-    "pretest": "tsc",
-    "prestart": "tsc",
-    "build": "tsc",
+    "prepack": "tsc --build",
+    "pretest": "tsc --build",
+    "prestart": "tsc --build",
+    "build": "tsc --build",
     "test": "node --test ./transpiled/**/*.test.js"
   },
   "dependencies": {

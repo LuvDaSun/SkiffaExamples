@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "prepack": "node ./scripts/build.js",
-    "pretest": "tsc",
+    "pretest": "tsc --build",
     "prestart": "node ./scripts/build.js",
     "start": "node transpiled/server.js",
     "build": "node ./scripts/build.js",
@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@types/node": "^18.19.31",
-    "shared": "^0.1.0",
-    "reverse-api": "^0.1.0"
+    "reverse-api": "^0.1.0",
+    "shared": "^0.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
