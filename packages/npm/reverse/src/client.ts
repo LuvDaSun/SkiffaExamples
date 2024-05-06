@@ -19,6 +19,11 @@ function main() {
         const form = event.target as HTMLFormElement;
         // assume our form has one element that is an input
         const input = form.elements.item(0) as HTMLInputElement;
+        const inputValue = input.value.trim();
+
+        if (inputValue.length === 0) {
+          return;
+        }
 
         // call the api
         const result = await api.reverse(
@@ -38,8 +43,13 @@ function main() {
         // get the result
         const resultValue = await result.value();
 
-        // alert the result, a reversed string!
-        alert(resultValue);
+        const resultDiv = document.getElementById("result")!;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.innerText = resultValue;
+        resultDiv.prepend(itemDiv);
+
+        form.reset();
       } finally {
         // unset busy class, we are done
         window.document.body.className = "";

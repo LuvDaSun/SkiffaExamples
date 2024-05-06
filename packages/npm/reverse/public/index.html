@@ -8,6 +8,7 @@
       * {
         font-size: inherit;
         color: inherit;
+        font-family: inherit;
       }
       button {
         color: black;
@@ -17,22 +18,29 @@
         background-color: white;
         color: #222;
         font-size: 100px;
+        font-family: serif;
       }
       body.busy {
         opacity: 0.5;
       }
+      body > * {
+        margin: 50px;
+      }
       form {
-        width: 50%;
-        margin: 50px auto;
         display: flex;
         flex-direction: row;
       }
       form > input {
         flex-grow: 1;
       }
+      form > button {
+        flex-grow: 0;
+      }
       form > * {
         border: 2px solid black;
+        border-radius: 10px;
         margin: -1px;
+        padding: 10px 20px;
       }
     </style>
   </head>
@@ -41,5 +49,6 @@
       <input type="text" />
       <button type="submit">Ok</button>
     </form>
+    <div id="result"></div>
   </body>
 </html>
