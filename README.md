@@ -4,8 +4,7 @@ This repository contains examples that you may use as a starting point for using
 
 ## TOC
 
-- reverse
-  Minimal API that reverses a string.
+- reverse, a very minimal API that reverses a string.
 
   [specification](specifications/reverse-api/yaml), [npm](packages/npm/reverse-api)
 
@@ -19,4 +18,18 @@ Make sure you have [Node.js](https://nodejs.org) and npm (included in Node.js) i
 
 After setting up, you can run an example by going to it's directory via `npm start`. Also check out the `README.md` of the example for more information.
 
-If you are using vscode, you could also open the workspace file `OpenApi42-Examples.code-workspace` and use the configured launch commands.
+If you are using vscode, you could also open the workspace file `OpenApi42-Examples.code-workspace` and use the configured launch commands (see [Running a file](#running-a-file)).
+
+### Running all tests
+
+We have unit tests! After setting up, run `npm test --workspaces` this will run all unit tests. You will need node v21 or higher for this to work properly!
+
+### Running a file
+
+If you only want to run a single unit test file, then open the [workspace file](./OpenApi42-Examples.code-workspace) in Visual Studio Code. Then pick a unit test (`*.test.ts`) and choose the `run file` option from the launch menu.
+
+![run file](./assets/run-file.png)
+
+Make sure you pick the run file that is in the test project (`npm/reverse` in the image).
+
+Breakpoints are supported!
