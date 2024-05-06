@@ -10,7 +10,8 @@
   "scripts": {
     "spelling": "cspell",
     "formatting": "prettier --check *",
-    "generate": "node ./scripts/generate.js"
+    "generate": "node ./scripts/generate.js",
+    "initialize": "node ./scripts/initialize.js"
   },
   "devDependencies": {
     "cspell": "^8.8.0",

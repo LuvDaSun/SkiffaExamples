@@ -12,12 +12,10 @@ This repository contains examples that you may use as a starting point for using
 
 ### Setting up
 
-Make sure you have [Node.js](https://nodejs.org) and npm (included in Node.js) installed on your system. Then, run the following to install everything.
+Make sure you have [Node.js](https://nodejs.org) and npm (included in Node.js) installed on your system. Then, run the following to install and generate everything.
 
 ```
-npm install --no-workspaces
-npm run generate
-npm install --workspaces
+npm run initialize
 ```
 
 This will also trigger the a script that will generate all API code with [oa42-generator](https://github.com/LuvDaSun/OpenApi42).
