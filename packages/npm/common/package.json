@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "main": "./bundled/main.cjs",
-  "module": "./bundled/main.js",
+  "module": "./transpiled/main.js",
   "types": "./typed/main.d.ts",
   "exports": {
     ".": {
-      "require": "./bundled/main.cjs",
-      "import": "./bundled/main.js",
+      "import": "./transpiled/main.js",
       "types": "./typed/main.d.ts"
     }
   },
