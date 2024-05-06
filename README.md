@@ -20,6 +20,8 @@ After setting up, you can run an example by going to it's directory via `npm sta
 
 If you are using vscode, you could also open the workspace file `OpenApi42-Examples.code-workspace` and use the configured launch commands (see [Running a file](#running-a-file)).
 
+All of the Node.js examples are located in the [packages/npm](./packages/npm/) directory.
+
 ### Running all tests
 
 We have unit tests! After setting up, run `npm test --workspaces` this will run all unit tests. You will need node v21 or higher for this to work properly!
