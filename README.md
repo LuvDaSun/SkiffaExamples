@@ -8,7 +8,7 @@ This repository contains examples that you may use as a starting point for using
 
   [specification](specifications/reverse-api/yaml), [npm](packages/npm/reverse-api)
 
-## Node.js
+## Node.js (npm)
 
 ### Setting up
 
@@ -33,3 +33,7 @@ If you only want to run a single unit test file, then open the [workspace file](
 Make sure you pick the run file that is in the test project (`npm/reverse` in the image).
 
 Breakpoints are supported!
+
+## Rust (cargo)
+
+Coming (soon?)...
