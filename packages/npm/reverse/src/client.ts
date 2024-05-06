@@ -43,12 +43,17 @@ function main() {
         // get the result
         const resultValue = await result.value();
 
+        // find the result div, assume it's there
         const resultDiv = document.getElementById("result")!;
 
+        // create and fill a div for out result
         const itemDiv = document.createElement("div");
         itemDiv.innerText = resultValue;
+
+        // add it to the result dic
         resultDiv.prepend(itemDiv);
 
+        // reset the form
         form.reset();
       } finally {
         // unset busy class, we are done
