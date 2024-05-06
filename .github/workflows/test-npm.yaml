@@ -23,9 +23,7 @@ jobs:
       - run: corepack enable
 
       - uses: actions/checkout@v4
-      - run: npm ci --no-workspaces
-      - run: npm run generate
-      - run: npm ci --workspaces
+      - run: npm run initialize
 
       # node test runner seems to support globs since v21
       - if: ${{ matrix.node-version >= 21 }}
