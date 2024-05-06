@@ -10,10 +10,15 @@ async function main() {
   // create and configure server
 
   const server = new api.Server();
+  // register the reverse operation
   server.registerReverseOperation(async (incomingRequest) => {
+    // get the text we want to reverse
     const originalText = await incomingRequest.value();
+
+    // reverse the text
     const reversedText = reverse(originalText);
 
+    // return the reversed text to the client
     return {
       status: 200,
       contentType: "text/plain",
@@ -21,7 +26,7 @@ async function main() {
     };
   });
 
-  // serve a static file
+  // serve a static file (will be generic middleware in the future)
   server.registerMiddleware(async (request, next) => {
     if (request.method === "GET") {
       switch (request.path) {
@@ -74,8 +79,7 @@ async function main() {
     return response;
   });
 
-  // read the port to listen to from the environment or use the default
-
+  // get port to listen to from the environment or use the default
   const port = Number(process.env.PORT ?? 8080);
 
   console.info(`Starting server...`);
