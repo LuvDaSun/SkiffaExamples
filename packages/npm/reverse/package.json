@@ -10,7 +10,7 @@
     "test": "node --test ./transpiled/**/*.test.js"
   },
   "dependencies": {
-    "@types/node": "^18.19.31",
+    "@types/node": "^18.19.32",
     "reverse-api": "^0.1.0",
     "shared": "^0.1.0"
   },
