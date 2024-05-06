@@ -11,6 +11,9 @@ paths:
   /reverse:
     post:
       operationId: reverse
+      description: >
+        Reads a string from the request body and returns the reversed value in the body of
+        the response.
       requestBody:
         content:
           "text/plain": {}

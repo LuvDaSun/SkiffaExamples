@@ -3,7 +3,9 @@ import test from "node:test";
 import * as api from "reverse-api";
 import * as operationHandlers from "../operation-handlers/index.js";
 
-// testing the reverse operation
+/**
+ * test the reverse operation handler
+ */
 test("reverse", async () => {
   // create a new server
   const server = new api.Server();

@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": "specifications",
+      "path": "specifications",
+    },
+    {
       "name": "npm/shared",
       "path": "packages/npm/shared",
     },
