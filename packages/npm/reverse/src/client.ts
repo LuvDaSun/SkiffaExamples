@@ -2,6 +2,7 @@ import * as api from "reverse-api";
 
 main();
 
+// entrypoint for the client
 function main() {
   // Add event listener for sub events
   window.addEventListener("submit", (event) => {

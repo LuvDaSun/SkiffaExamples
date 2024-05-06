@@ -6,6 +6,7 @@ import { projectRoot } from "./root.js";
 
 main();
 
+// entrypoint for the server
 async function main() {
   // create and configure server
 
