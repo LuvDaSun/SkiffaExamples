@@ -2,8 +2,10 @@
 
 import cp from "child_process";
 import path from "path";
+import { fileURLToPath } from "url";
 
-const workspaceRoot = path.resolve(import.meta.dirname, "..");
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const workspaceRoot = path.resolve(dirname, "..");
 
 const options = { shell: true, stdio: "inherit", env: process.env };
 
