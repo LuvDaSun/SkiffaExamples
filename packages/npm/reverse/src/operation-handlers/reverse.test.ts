@@ -30,7 +30,7 @@ test("reverse", async () => {
   );
 
   // status should be 200
-  assert(result.status === 200);
+  api.lib.expectStatus(result, 200);
 
   // collect the result
   const resultValue = await result.value();
