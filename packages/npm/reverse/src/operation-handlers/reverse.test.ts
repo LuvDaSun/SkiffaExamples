@@ -1,7 +1,7 @@
 import assert from "assert";
 import test from "node:test";
 import * as api from "reverse-api";
-import * as operationHandlers from "../operation-handlers/index.js";
+import * as operationHandlers from "../operation-handlers.js";
 
 /**
  * test the reverse operation handler
