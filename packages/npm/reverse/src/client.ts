@@ -22,29 +22,17 @@ function main() {
       }
 
       // call the api
-      const result = await api.reverse(
-        {
-          contentType: "text/plain",
-          value: () => input.value,
-        },
-        {},
+      const result = await api.client.reverse(
+           input.value,
         { baseUrl: new URL("/", window.document.location.href) },
       );
-
-      // verify response status
-      if (result.status !== 200) {
-        throw new Error("unexpected status");
-      }
-
-      // get the result
-      const resultValue = await result.value();
 
       // find the result div, assume it's there
       const resultDiv = document.getElementById("result")!;
 
       // create and fill a div for out result
       const itemDiv = document.createElement("div");
-      itemDiv.innerText = resultValue;
+      itemDiv.innerText = result as string;
 
       // add it to the result dic
       resultDiv.prepend(itemDiv);

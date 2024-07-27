@@ -8,7 +8,7 @@ import * as operationHandlers from "../operation-handlers/index.js";
  */
 test("reverse", async () => {
   // create a new server
-  const server = new api.Server();
+  const server = new api.server.Server();
 
   // register only one operation handler, the one we are testing
   server.registerReverseOperation(operationHandlers.reverse);
@@ -20,21 +20,8 @@ test("reverse", async () => {
   const baseUrl = new URL(`http://localhost:${listener.port}`);
 
   // pass the value 123 to the operation handler
-  const result = await api.reverse(
-    {
-      contentType: "text/plain",
-      value: () => "123",
-    },
-    {},
-    { baseUrl },
-  );
-
-  // status should be 200
-  api.lib.expectStatus(result, 200);
-
-  // collect the result
-  const resultValue = await result.value();
+  const result = await api.client.reverse("123", { baseUrl });
 
   // we expect to get 321, the reverse of 123
-  assert.equal(resultValue, "321");
+  assert.equal(result, "321");
 });

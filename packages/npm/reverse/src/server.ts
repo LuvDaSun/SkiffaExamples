@@ -9,7 +9,7 @@ main();
 // entrypoint for the server
 async function main() {
   // create the server
-  const server = new api.Server();
+  const server = new api.server.Server();
 
   // register all operations
   server.registerOperations(operationHandlers);
