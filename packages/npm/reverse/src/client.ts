@@ -22,7 +22,7 @@ function main() {
       }
 
       // call the api
-      const result = await api.client.reverse(
+      const resultValue = await api.client.reverse(
            input.value,
         { baseUrl: new URL("/", window.document.location.href) },
       );
@@ -32,7 +32,7 @@ function main() {
 
       // create and fill a div for out result
       const itemDiv = document.createElement("div");
-      itemDiv.innerText = result as string;
+      itemDiv.innerText = resultValue;
 
       // add it to the result dic
       resultDiv.prepend(itemDiv);

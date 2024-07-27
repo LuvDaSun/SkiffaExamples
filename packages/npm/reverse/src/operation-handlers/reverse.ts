@@ -5,12 +5,9 @@ import * as api from "reverse-api";
  * This operation will take the body of a request, a string and return the reversed
  * string in the body of the response.
  */
-export const reverse: api.server.ReverseOperationHandler<{}> = async (entity) => {
-  // get the text we want to reverse
-  const originalText = entity as string;
-
+export const reverse: api.server.ReverseOperationHandler<{}> = async (text) => {
   // reverse the text
-  const characters = [...originalText];
+  const characters = [...text];
   characters.reverse();
   const reversedText = characters.join("");
 
