@@ -23,11 +23,11 @@
     "test": "node --test ./transpiled/**/*.test.js"
   },
   "dependencies": {
-    "@types/node": "^18.19.32"
+    "@types/node": "^18.19.42"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.4",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": ">=18"

@@ -1,6 +1,6 @@
-# OpenApi42 Examples
+# Skiffa Examples
 
-This repository contains examples that you may use as a starting point for using OpenApi42.
+This repository contains examples that you may use as a starting point for using Skiffa.
 
 ## TOC
 
@@ -18,13 +18,13 @@ Make sure you have [Node.js](https://nodejs.org) and npm (included in Node.js) i
 npm run initialize
 ```
 
-This will also trigger the a script that will generate all API code with [oa42-generator](https://github.com/LuvDaSun/OpenApi42).
+This will also trigger the a script that will generate all API code with [skiffa-generator](https://github.com/LuvDaSun/Skiffa).
 
 ### Running an example
 
 After setting up, you can run an example by going to it's directory via `npm start`. Also check out the `README.md` of the example for more information.
 
-If you are using vscode, you could also open the workspace file `OpenApi42-Examples.code-workspace` and use the configured launch commands (see [Running a file](#running-a-file)).
+If you are using vscode, you could also open the workspace file `SkiffaExamples.code-workspace` and use the configured launch commands (see [Running a file](#running-a-file)).
 
 All of the Node.js examples are located in the [packages/npm](./packages/npm/) directory.
 
@@ -34,7 +34,7 @@ We have unit tests! After setting up, run `npm test --workspaces` this will run 
 
 ### Running a file
 
-If you only want to run a single unit test file, then open the [workspace file](./OpenApi42-Examples.code-workspace) in Visual Studio Code. Then pick a unit test (`*.test.ts`) and choose the `run file` option from the launch menu.
+If you only want to run a single unit test file, then open the [workspace file](./SkiffaExamples.code-workspace) in Visual Studio Code. Then pick a unit test (`*.test.ts`) and choose the `run file` option from the launch menu.
 
 ![run file](./assets/run-file.png)
 

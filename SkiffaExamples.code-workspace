@@ -14,7 +14,7 @@
     },
   ],
   "settings": {
-    "window.title": "OpenApi42 Examples",
+    "window.title": "Skiffa Examples",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll": "always",

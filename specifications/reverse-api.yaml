@@ -4,7 +4,7 @@ info:
   title: Reverse API
   description: |-
     This API is able to take a string and reverse it. It has only one endpoint! Use this API
-    to get started with OpenApi42.
+    to get started with Skiffa.
   version: 0.1.0
 
 paths:

@@ -13,7 +13,7 @@ const names = ["reverse-api"];
 
 for (const name of names) {
   cp.execFileSync(
-    "oa42-generator",
+    "skiffa-generator",
     [
       "package",
       path.resolve(workspaceRoot, "specifications", `${name}.yaml`),
