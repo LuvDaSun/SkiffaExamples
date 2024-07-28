@@ -22,10 +22,9 @@ function main() {
       }
 
       // call the api
-      const resultValue = await api.client.reverse(
-           input.value,
-        { baseUrl: new URL("/", window.document.location.href) },
-      );
+      const resultValue = await api.client.reverse(input.value, {
+        baseUrl: new URL("/", window.document.location.href),
+      });
 
       // find the result div, assume it's there
       const resultDiv = document.getElementById("result")!;
