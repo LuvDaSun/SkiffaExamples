@@ -12,6 +12,10 @@
       "name": "npm/reverse",
       "path": "packages/npm/reverse",
     },
+    {
+      "name": "npm/todo",
+      "path": "packages/npm/todo",
+    },
   ],
   "settings": {
     "window.title": "Skiffa Examples",

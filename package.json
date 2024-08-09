@@ -14,8 +14,8 @@
     "initialize": "node ./scripts/initialize.js"
   },
   "devDependencies": {
-    "@skiffa/generator": "^0.13.5",
-    "cspell": "^8.12.1",
+    "@skiffa/generator": "^0.13.6",
+    "cspell": "^8.13.1",
     "prettier": "^3.3.3"
   }
 }

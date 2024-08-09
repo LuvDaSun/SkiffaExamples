@@ -4,27 +4,18 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    container: node:21.5.0-alpine3.19
+    container: node:22.6.0-alpine3.19
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
       - run: npm --workspaces audit --audit-level high
 
-  test-lts:
-    strategy:
-      matrix:
-        node-version: [18, 20, 22]
-        runs-on: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.runs-on }}
+  test:
+    runs-on: ubuntu-latest
+    container: node:22.6.0-alpine3.19
     steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
       - run: corepack enable
 
       - uses: actions/checkout@v4
       - run: npm run initialize
-
-      # node test runner seems to support globs since v21
-      - if: ${{ matrix.node-version >= 21 }}
-        run: npm --workspaces test
+      - run: npm --workspaces test

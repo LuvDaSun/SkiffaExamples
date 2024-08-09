@@ -9,7 +9,6 @@
 !.gitattributes
 !.editorconfig
 !.npmrc
-
 node_modules/
 target/
 coverage/

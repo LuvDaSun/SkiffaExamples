@@ -8,6 +8,7 @@ words:
   - remle
   - ryanluker
   - skiffa
+  - todos
 useGitignore: true
 files:
   - "**"
