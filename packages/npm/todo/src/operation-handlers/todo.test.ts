@@ -1,11 +1,11 @@
 import * as assert from "node:assert";
 import test from "node:test";
 import * as api from "todo-api";
-import * as addTodoOperationHandler from "./todo.js";
+import * as TodoOperationHandler from "./todo.js";
 
 test("create todo", async (t) => {
   const server = new api.server.Server();
-  server.registerAddTodoItemOperation(addTodoOperationHandler.addTodoItem);
+  server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
   await using listener = await api.lib.listen(server);
   const baseUrl = new URL(`http://localhost:${listener.port}`);
 

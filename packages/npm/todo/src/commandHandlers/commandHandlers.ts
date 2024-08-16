@@ -1,7 +1,7 @@
 //command handler for all commands
 
+export const todos = new Map<number, { todoName: string; todoId: number; todoIsDone: boolean }>();
 export class CommandHandlers {
-  private todos: Map<number, { todoName: string; todoId: number; todoIsDone: boolean }> = new Map();
 
   async createTodo(command: { todoName: string }) {
     //generate a unique id for each todo
@@ -19,7 +19,26 @@ export class CommandHandlers {
       todoIsDone,
     };
 
-    this.todos.set(todoId, todo);
-    return todo;
+    todos.set(todoId, todo);
+    return todo;   
   }
+
+
+  async updateTodo(command: {todoId: number, todoName:string}){
+    const {todoId, todoName}= command;
+    const todoToUpdate = todos.get(todoId);
+    
+     
+    if(todos.has(todoId)){
+
+      if(todoToUpdate){
+        todoToUpdate.todoName = todoName;
+
+        todos.set(todoId,todoToUpdate )
+
+      }
+    }
+    return todoToUpdate
+  }
+
 }
