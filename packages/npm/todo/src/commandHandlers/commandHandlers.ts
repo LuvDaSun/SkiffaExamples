@@ -41,4 +41,20 @@ export class CommandHandlers {
     return todoToUpdate
   }
 
+
+  async deleteTodoItem(command: {todoId:number}){
+    const {todoId}= command;
+    const todoToDelete = todos.get(todoId);
+    
+     
+    if(todos.has(todoId)){
+
+      if(todoToDelete){
+        todos.delete(todoId)
+
+      }
+    }
+    return null;
+  }
+
 }
