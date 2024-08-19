@@ -1,8 +1,6 @@
 export default class updateTodo{
     todoId : number;
-    todoName : string
-    constructor(todoId:number, todoName:string){
+      constructor(todoId:number){
         this.todoId = todoId;
-        this.todoName = todoName;
-    }
+      }
 }

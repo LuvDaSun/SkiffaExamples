@@ -24,23 +24,20 @@ export class CommandHandlers {
   }
 
 
-  async updateTodo(command: {todoId: number, todoName:string}){
-    const {todoId, todoName}= command;
-    const todoToUpdate = todos.get(todoId);
-    
-     
-    if(todos.has(todoId)){
-
-      if(todoToUpdate){
-        todoToUpdate.todoName = todoName;
-
-        todos.set(todoId,todoToUpdate )
-
+  async updateTodo(command: { todoId: number;}) {
+    const { todoId } = command;  // Destructure from command
+    const todoToUpdate = todos.get(todoId)!;
+  
+    if (todos.has(todoId)) {
+      if (todoToUpdate) {
+        todoToUpdate.todoName = "Go for camping";  
+  
+        todos.set(todoId, todoToUpdate); 
       }
     }
-    return todoToUpdate
+    return todoToUpdate;  
   }
-
+  
 
   async deleteTodoItem(command: {todoId:number}){
     const {todoId}= command;
