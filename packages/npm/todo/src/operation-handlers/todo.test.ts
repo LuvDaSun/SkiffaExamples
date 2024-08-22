@@ -31,7 +31,11 @@ test("update todo", async () => {
   const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
   const todoId = createdResult.id;
 
-  const result = await api.client.modifyTodoItem({ id: todoId }, { description: "Eat Rice" }, { baseUrl });
+  const result = await api.client.modifyTodoItem(
+    { id: todoId },
+    { description: "Eat Rice" },
+    { baseUrl },
+  );
 
   // Log the result to see what's returned
   console.log("Returned result:", result);
