@@ -1,7 +1,7 @@
-export default class DeleteTodo{
-    todoId:number
+export default class DeleteTodo {
+  todoId: number;
 
-    constructor(todoId:number){
-        this.todoId= todoId;
-    }
+  constructor(todoId: number) {
+    this.todoId = todoId;
+  }
 }

@@ -9,7 +9,6 @@ export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (to
 
   const createdTodo = await commandHandlers.createTodo(createTodoCommand);
 
-
   const todoItem = {
     description: createdTodo.todoName,
     id: createdTodo.todoId,
@@ -19,9 +18,8 @@ export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (to
   return todoItem;
 };
 
-
 export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = async (todo) => {
-  const updateTodoCommand = new updateTodo(todo.id) ;
+  const updateTodoCommand = new updateTodo(todo.id);
   const commandHandlers = new CommandHandlers();
 
   const updatedTodo = await commandHandlers.updateTodo(updateTodoCommand);
@@ -34,7 +32,4 @@ export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = asy
   return todoItem;
 };
 
-
-export const deleteTodoItem:api.server.DeleteTodoItemOperationHandler<{}>= async(todo)=>{
-
-}
+export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = async (todo) => {};

@@ -1,15 +1,14 @@
 {
-    "extends": "@tsconfig/node18",
-    "compilerOptions": {
-      "rootDir": "./src",
-      "outDir": "./transpiled",
-      "declarationDir": "./typed",
-      "sourceMap": true,
-      "declaration": true,
-      "composite": true,
-      "lib": ["ES2023", "DOM"]
-    },
-    "include": ["src/**/*"],
-    "references": [{ "path": "../shared/" }]
-  }
-  
+  "extends": "@tsconfig/node18",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./transpiled",
+    "declarationDir": "./typed",
+    "sourceMap": true,
+    "declaration": true,
+    "composite": true,
+    "lib": ["ES2023", "DOM"]
+  },
+  "include": ["src/**/*"],
+  "references": [{ "path": "../shared/" }]
+}
