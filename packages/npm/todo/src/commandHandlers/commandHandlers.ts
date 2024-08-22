@@ -23,23 +23,26 @@ export class CommandHandlers {
     return todo;   
   }
 
-
-  async updateTodo(command: { todoId: number;}) {
-    const { todoId } = command;  // Destructure from command
-    const todoToUpdate = todos.get(todoId)!;
+ 
   
+  async updateTodo(command: { todoId: number; }) {
+    
+    const { todoId } = command;
+    const todoToUpdate = todos.get(todoId)!;
+
     if (todos.has(todoId)) {
       if (todoToUpdate) {
-        todoToUpdate.todoName = "Go for camping";  
-  
-        todos.set(todoId, todoToUpdate); 
+        todoToUpdate.todoName = "Go for camping";
+        todos.set(todoId, todoToUpdate);
       }
     }
-    return todoToUpdate;  
+    return todoToUpdate;
   }
+
   
 
-  async deleteTodoItem(command: {todoId:number}){
+  
+   deleteTodoItem(command: {todoId:number}): void{
     const {todoId}= command;
     const todoToDelete = todos.get(todoId);
     
@@ -51,7 +54,6 @@ export class CommandHandlers {
 
       }
     }
-    return null;
-  }
+   }
 
 }

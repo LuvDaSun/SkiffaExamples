@@ -1,7 +1,11 @@
 import * as api from "todo-api";
 import { CommandHandlers } from "../commandHandlers/commandHandlers.js";
+import { QueryHandler } from "../queryHandler/queryHandler.js";
+
 import CreateTodo from "../commands/createTodo.js";
+import DeleteTodo from "../commands/deleteTodo.js";
 import updateTodo from "../commands/updateTodo.js";
+import listTodoItems from "../query/listTodoItems.js";
 
 export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (todo) => {
   const createTodoCommand = new CreateTodo(todo.description);
@@ -24,7 +28,7 @@ export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = asy
   const updateTodoCommand = new updateTodo(todo.id) ;
   const commandHandlers = new CommandHandlers();
 
-  const updatedTodo = await commandHandlers.updateTodo(updateTodoCommand);
+ const updatedTodo = await commandHandlers.updateTodo(updateTodoCommand);
 
   const todoItem = {
     description: updatedTodo.todoName,
@@ -35,6 +39,22 @@ export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = asy
 };
 
 
-export const deleteTodoItem:api.server.DeleteTodoItemOperationHandler<{}>= async(todo)=>{
+export const ListTodoItems:api.server.ListTodoItemsOperationHandler<{}> = async(todo) => {
+    const listTodoCommand = new listTodoItems(todo)
+    const listTodoHandler = new QueryHandler()
 
+    const TodoItems = listTodoHandler.listTodoItems(listTodoCommand)
+
+    return TodoItems
+}
+
+
+// This Function is void so i did not return a value
+export const deleteTodoItem:api.server.DeleteTodoItemOperationHandler<{}>= async(todo)=>{
+  const deleteTodoCommand = new DeleteTodo(todo.id)
+  const deleteTodoHandler = new CommandHandlers()
+  
+  const deletedTodo = deleteTodoHandler.deleteTodoItem(deleteTodoCommand)
+  
+  return deletedTodo
 }

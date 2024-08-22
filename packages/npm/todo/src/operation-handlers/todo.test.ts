@@ -31,13 +31,13 @@ test("update todo", async () => {
   const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
   const todoId = createdResult.id;
 
-  const result = await api.client.modifyTodoItem({ id: todoId }, { description: "Eat Rice" }, { baseUrl });  
+  const result = await api.client.modifyTodoItem({ id: todoId }, { description: "Eat Rice" }, { baseUrl });
 
   // Log the result to see what's returned
   console.log("Returned result:", result);
 
   // Check if the result matches the expected format
-  assert.equal(result.description, "Eat Rice");  
+  assert.equal(result.description, "Eat Rice");
   assert.equal(result.done, false);
   assert.equal(typeof result.id, "number");
 });
