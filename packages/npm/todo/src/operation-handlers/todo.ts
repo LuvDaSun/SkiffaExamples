@@ -42,9 +42,7 @@ export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = asy
   const deleteTodoCommand = new DeleteTodo(todo.id);
   const deleteTodoHandler = new CommandHandlers();
 
-  const deletedTodo = deleteTodoHandler.deleteTodoItem(deleteTodoCommand);
-
-  return deletedTodo;
+  deleteTodoHandler.deleteTodoItem(deleteTodoCommand);
 };
 
 export const todoItemSetDone: api.server.TodoItemSetDoneOperationHandler<{}> = async (todo) => {
