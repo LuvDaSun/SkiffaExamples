@@ -46,7 +46,6 @@ test("update todo", async () => {
   assert.equal(typeof result.id, "number");
 });
 
-
 test("List todo", async () => {
   const server = new api.server.Server();
   server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
@@ -58,16 +57,13 @@ test("List todo", async () => {
   const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
   const description = createdResult.description;
 
-  const result = await api.client.listTodoItems(
-    { description: description },
-      
-  );
+  const result = await api.client.listTodoItems({ description: description });
 
   // Log the result to see what's returned
   console.log("Returned result:", result);
 
   // Check if the result matches the expected format
-   assert.equal(typeof result, 'string');
+  assert.equal(typeof result, "string");
 });
 
 test("delete todo", async () => {
@@ -81,14 +77,11 @@ test("delete todo", async () => {
   const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
   const todoId = createdResult.id;
 
-  const result = await api.client.deleteTodoItem(
-    { id: todoId },
-     { baseUrl },
-  );
+  const result = await api.client.deleteTodoItem({ id: todoId }, { baseUrl });
 
   // Log the result to see what's returned
   console.log("Returned result:", result);
 
   // Check if the result matches the expected format
-   assert.equal(typeof result !== 'object', true);
+  assert.equal(typeof result !== "object", true);
 });
