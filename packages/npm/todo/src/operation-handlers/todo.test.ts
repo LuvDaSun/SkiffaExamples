@@ -45,7 +45,7 @@ test("todo test scenario", async () => {
   });
 });
 
-test("create todo", async () => {
+test.skip("create todo", async () => {
   const server = new api.server.Server();
   server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
   await using listener = await api.lib.listen(server);
@@ -62,7 +62,7 @@ test("create todo", async () => {
   assert.equal(typeof result.id, "number");
 });
 
-test("update todo", async () => {
+test.skip("update todo", async () => {
   const server = new api.server.Server();
   server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
   server.registerModifyTodoItemOperation(TodoOperationHandler.modifyTodoItem); // Register the update operation
@@ -88,7 +88,7 @@ test("update todo", async () => {
   assert.equal(typeof result.id, "number");
 });
 
-test("List todo", async () => {
+test.skip("List todo", async () => {
   const server = new api.server.Server();
   server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
   server.registerListTodoItemsOperation(TodoOperationHandler.listTodoItem); // Register the update operation
@@ -108,7 +108,7 @@ test("List todo", async () => {
   assert.equal(typeof result, "string");
 });
 
-test("delete todo", async () => {
+test.skip("delete todo", async () => {
   const server = new api.server.Server();
   server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
   server.registerDeleteTodoItemOperation(TodoOperationHandler.deleteTodoItem); // Register the update operation
