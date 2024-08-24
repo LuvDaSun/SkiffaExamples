@@ -1,7 +1,49 @@
 import * as assert from "node:assert";
 import test from "node:test";
 import * as api from "todo-api";
+import * as operationHandlers from "../operation-handlers.js";
 import * as TodoOperationHandler from "./todo.js";
+
+test("todo test scenario", async () => {
+  const server = new api.server.Server();
+  server.registerOperations(operationHandlers);
+
+  test("list", async () => {
+    // expect empty list
+  });
+
+  test("create", async () => {
+    //
+  });
+
+  test("list", async () => {
+    // expect 1 item in list
+  });
+
+  test("update", async () => {
+    //
+  });
+
+  test("list", async () => {
+    // expect 1 updated item in list
+  });
+
+  test("set-done", async () => {
+    //
+  });
+
+  test("list", async () => {
+    // expect 1 updated item in list
+  });
+
+  test("delete", async () => {
+    //
+  });
+
+  test("list", async () => {
+    // expect empty list
+  });
+});
 
 test("create todo", async () => {
   const server = new api.server.Server();
