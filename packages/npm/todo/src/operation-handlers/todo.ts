@@ -4,7 +4,9 @@ import { QueryHandler } from "../queryHandler/queryHandler.js";
 
 import CreateTodo from "../commands/createTodo.js";
 import DeleteTodo from "../commands/deleteTodo.js";
+import todoIsDone from "../commands/todoIsDone.js";
 import updateTodo from "../commands/updateTodo.js";
+
  
 export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async () => {
   const queryHandler = new QueryHandler();
@@ -48,5 +50,16 @@ export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = asy
 };
 
 export const todoItemSetDone: api.server.TodoItemSetDoneOperationHandler<{}> = async (todo) => {
-  throw "implement me!";
+  const isDoneCommand = new todoIsDone(todo.id)
+  const isDoneHandler = new CommandHandlers()
+
+    const isDone = isDoneHandler.markTodoAsDone(isDoneCommand)
+
+    const todoItem = {
+      description: isDone.todoName,
+      id: isDone.todoId,
+      done: isDone.todoIsDone,
+    };
+    return todoItem;
+    
 };

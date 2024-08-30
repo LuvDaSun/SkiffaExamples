@@ -29,7 +29,7 @@ export class CommandHandlers {
 
     if (todos.has(todoId)) {
       if (todoToUpdate) {
-        todoToUpdate.todoName = "Go for camping";
+        todoToUpdate.todoName = "Go to the gym";
 
         todos.set(todoId, todoToUpdate);
       }
@@ -50,5 +50,19 @@ export class CommandHandlers {
       }
     }
    }
+  
+   markTodoAsDone(command: { todoId: number }) {
+    const { todoId } = command; 
+    const todoToMarkDone = todos.get(todoId)!;
+
+    if (todos.has(todoId)) {
+      if (todoToMarkDone) {
+        todoToMarkDone.todoIsDone = true; 
+        todos.set(todoId, todoToMarkDone);
+      }
+    }
+
+    return todoToMarkDone;
+  }
 
 }
