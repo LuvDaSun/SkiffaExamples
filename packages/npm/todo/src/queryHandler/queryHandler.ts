@@ -1,14 +1,11 @@
+import { TodoItem } from "../../../../../generated/npm/todo-api/typed/types.js";
 import { todos } from "../commandHandlers/commandHandlers.js";
-
 export class QueryHandler {
-  async listTodoItems(command: { todoName: string[] }) {
-    // Initialize command.todoName if it hasn't been initialized
-    command.todoName = command.todoName || [];
-
-    todos.forEach((todo) => {
-      command.todoName.push(todo.todoName);
-    });
-
-    return command.todoName;
+  async listTodoItems(): Promise<TodoItem[]> {
+    return Array.from(todos.values()).map((todo) => ({
+      id: todo.todoId,
+      description: todo.todoName,
+      done: todo.todoIsDone,
+    }));
   }
 }

@@ -2,128 +2,106 @@ import * as assert from "node:assert";
 import test from "node:test";
 import * as api from "todo-api";
 import * as operationHandlers from "../operation-handlers.js";
-import * as TodoOperationHandler from "./todo.js";
 
-test("todo test scenario", async () => {
+test("todo test scenario", async (t) => {
   const server = new api.server.Server();
-  server.registerOperations(operationHandlers);
+  // Register the operations properly
+  server.registerOperations({
+    listTodoItems: operationHandlers.ListTodoItems,
+    addTodoItem: operationHandlers.addTodoItem,
+    modifyTodoItem: operationHandlers.modifyTodoItem,
+    deleteTodoItem: operationHandlers.deleteTodoItem,
+    todoItemSetDone: operationHandlers.todoItemSetDone,
+  });
+  let createTodo: { id: number; description: string; done: boolean };
 
-  test("list", async () => {
-    // expect empty list
+  await t.test("list (expect empty list)", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const listTodo: { id: number; description: string; done: boolean }[] =
+      await api.client.listTodoItems({ baseUrl });
+
+    assert.deepEqual(listTodo, []);
   });
 
-  test("create", async () => {
-    //
+  await t.test("create a todo item", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    createTodo = await api.client.addTodoItem(
+      { description: "Go to work" },
+      { baseUrl }
+    );
   });
 
-  test("list", async () => {
-    // expect 1 item in list
+  await t.test("list (expect 1 item in list)", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const listTodo: { id: number; description: string; done: boolean }[] =
+      await api.client.listTodoItems({ baseUrl });
+
+    assert.equal(listTodo.length, 1);
+    assert.equal(listTodo[0].description, "Go to work");
   });
 
-  test("update", async () => {
-    //
+  await t.test("update the todo item", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const updatedTodo = "Go to the gym";
+
+    await api.client.modifyTodoItem(
+      { id: createTodo.id },
+      { description: updatedTodo },
+      { baseUrl }
+    );
   });
 
-  test("list", async () => {
-    // expect 1 updated item in list
+  await t.test("list (expect 1 updated item in list)", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const listTodo: { id: number; description: string; done: boolean }[] =
+      await api.client.listTodoItems({ baseUrl });
+
+    assert.equal(listTodo.length, 1);
+    assert.equal(listTodo[0].description, "Go to the gym");
   });
 
-  test("set-done", async () => {
-    //
+  await t.test("set-done the todo item", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    await api.client.todoItemSetDone({ id: createTodo.id }, { baseUrl });
   });
 
-  test("list", async () => {
-    // expect 1 updated item in list
+  await t.test("list (expect 1 done item in list)", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const listTodo: { id: number; description: string; done: boolean }[] =
+      await api.client.listTodoItems({ baseUrl });
+
+    assert.equal(listTodo.length, 1);
+    assert.equal(listTodo[0].done, true);
   });
 
-  test("delete", async () => {
-    //
+  await t.test("delete the todo item", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    await api.client.deleteTodoItem({ id: createTodo.id }, { baseUrl });
   });
 
-  test("list", async () => {
-    // expect empty list
+  await t.test("list (expect empty list)", async () => {
+    await using listener = await api.lib.listen(server);
+    const baseUrl = new URL(`http://localhost:${listener.port}`);
+
+    const listTodo: { id: number; description: string; done: boolean }[] =
+      await api.client.listTodoItems({ baseUrl });
+
+    assert.deepEqual(listTodo, []);
   });
-});
-
-test.skip("create todo", async () => {
-  const server = new api.server.Server();
-  server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
-  await using listener = await api.lib.listen(server);
-  const baseUrl = new URL(`http://localhost:${listener.port}`);
-
-  const result = await api.client.addTodoItem({ description: "Wash clothes" }, { baseUrl });
-
-  // Log the result to see what's returned
-  console.log("Returned result:", result);
-
-  // Check if the result matches the expected format
-  assert.equal(result.description, "Wash clothes");
-  assert.equal(result.done, false);
-  assert.equal(typeof result.id, "number");
-});
-
-test.skip("update todo", async () => {
-  const server = new api.server.Server();
-  server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
-  server.registerModifyTodoItemOperation(TodoOperationHandler.modifyTodoItem); // Register the update operation
-  await using listener = await api.lib.listen(server);
-  const baseUrl = new URL(`http://localhost:${listener.port}`);
-
-  // First, create a todo item to update
-  const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
-  const todoId = createdResult.id;
-
-  const result = await api.client.modifyTodoItem(
-    { id: todoId },
-    { description: "Eat Rice" },
-    { baseUrl },
-  );
-
-  // Log the result to see what's returned
-  console.log("Returned result:", result);
-
-  // Check if the result matches the expected format
-  assert.equal(result.description, "Eat Rice");
-  assert.equal(result.done, false);
-  assert.equal(typeof result.id, "number");
-});
-
-test.skip("List todo", async () => {
-  const server = new api.server.Server();
-  server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
-  server.registerListTodoItemsOperation(TodoOperationHandler.listTodoItem); // Register the update operation
-  await using listener = await api.lib.listen(server);
-  const baseUrl = new URL(`http://localhost:${listener.port}`);
-
-  // First, create a todo item to update
-  const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
-  const description = createdResult.description;
-
-  const result = await api.client.listTodoItems({ description: description });
-
-  // Log the result to see what's returned
-  console.log("Returned result:", result);
-
-  // Check if the result matches the expected format
-  assert.equal(typeof result, "string");
-});
-
-test.skip("delete todo", async () => {
-  const server = new api.server.Server();
-  server.registerAddTodoItemOperation(TodoOperationHandler.addTodoItem);
-  server.registerDeleteTodoItemOperation(TodoOperationHandler.deleteTodoItem); // Register the update operation
-  await using listener = await api.lib.listen(server);
-  const baseUrl = new URL(`http://localhost:${listener.port}`);
-
-  // First, create a todo item to update
-  const createdResult = await api.client.addTodoItem({ description: "InitialTodo " }, { baseUrl });
-  const todoId = createdResult.id;
-
-  const result = await api.client.deleteTodoItem({ id: todoId }, { baseUrl });
-
-  // Log the result to see what's returned
-  console.log("Returned result:", result);
-
-  // Check if the result matches the expected format
-  assert.equal(typeof result !== "object", true);
 });
