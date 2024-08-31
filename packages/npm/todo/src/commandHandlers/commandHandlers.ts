@@ -26,7 +26,6 @@ export class CommandHandlers {
     const { todoId } = command; // Destructure from command
     const todoToUpdate = todos.get(todoId)!;
 
-
     if (todos.has(todoId)) {
       if (todoToUpdate) {
         todoToUpdate.todoName = "Go to the gym";
@@ -37,11 +36,8 @@ export class CommandHandlers {
     return todoToUpdate;
   }
 
-  
-
-  
-   deleteTodoItem(command: {todoId:number}): void{
-    const {todoId}= command;
+  deleteTodoItem(command: { todoId: number }): void {
+    const { todoId } = command;
     const todoToDelete = todos.get(todoId);
 
     if (todos.has(todoId)) {
@@ -49,20 +45,19 @@ export class CommandHandlers {
         todos.delete(todoId);
       }
     }
-   }
-  
-   markTodoAsDone(command: { todoId: number }) {
-    const { todoId } = command; 
+  }
+
+  markTodoAsDone(command: { todoId: number }) {
+    const { todoId } = command;
     const todoToMarkDone = todos.get(todoId)!;
 
     if (todos.has(todoId)) {
       if (todoToMarkDone) {
-        todoToMarkDone.todoIsDone = true; 
+        todoToMarkDone.todoIsDone = true;
         todos.set(todoId, todoToMarkDone);
       }
     }
 
     return todoToMarkDone;
   }
-
 }
