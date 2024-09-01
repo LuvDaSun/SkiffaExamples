@@ -1,10 +1,5 @@
 import * as api from "todo-api";
 import { CommandHandlers } from "../commandHandlers/commandHandlers.js";
- 
-import CreateTodo from "../commands/createTodo.js";
-import DeleteTodo from "../commands/deleteTodo.js";
-import todoIsDone from "../commands/todoIsDone.js";
-import updateTodo from "../commands/updateTodo.js";
 
 export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async () => {
   const commandHandler = new CommandHandlers();
@@ -12,10 +7,9 @@ export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async
 };
 
 export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (todo) => {
-  const createTodoCommand = new CreateTodo(todo.description);
-  const commandHandlers = new CommandHandlers();
+   const commandHandlers = new CommandHandlers();
 
-  const createdTodo = await commandHandlers.createTodo(createTodoCommand);
+  const createdTodo = await commandHandlers.createTodo(todo.description);
 
   const todoItem = {
     description: createdTodo.todoName,
@@ -27,10 +21,9 @@ export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (to
 };
 
 export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = async (todo) => {
-  const updateTodoCommand = new updateTodo(todo.id);
-  const commandHandlers = new CommandHandlers();
+   const commandHandlers = new CommandHandlers();
 
-  const updatedTodo = await commandHandlers.updateTodo(updateTodoCommand);
+  const updatedTodo = await commandHandlers.updateTodo(todo.id);
 
   const todoItem = {
     description: updatedTodo.todoName,
@@ -41,17 +34,15 @@ export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = asy
 };
 
 export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = async (todo) => {
-  const deleteTodoCommand = new DeleteTodo(todo.id);
-  const deleteTodoHandler = new CommandHandlers();
+   const deleteTodoHandler = new CommandHandlers();
 
-  deleteTodoHandler.deleteTodoItem(deleteTodoCommand);
+  deleteTodoHandler.deleteTodoItem(todo.id);
 };
 
 export const todoItemSetDone: api.server.TodoItemSetDoneOperationHandler<{}> = async (todo) => {
-  const isDoneCommand = new todoIsDone(todo.id);
-  const isDoneHandler = new CommandHandlers();
+   const isDoneHandler = new CommandHandlers();
 
-  const isDone = isDoneHandler.markTodoAsDone(isDoneCommand);
+  const isDone = isDoneHandler.markTodoAsDone(todo.id);
 
   const todoItem = {
     description: isDone.todoName,

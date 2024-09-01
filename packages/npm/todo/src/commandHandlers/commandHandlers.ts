@@ -14,7 +14,7 @@ export class CommandHandlers {
   }
 
 
-  async createTodo(command: { todoName: string }) {
+  async createTodo(  todoName: string ) {
     //generate a unique id for each todo
     const generateId = (): number => {
       return Math.floor(100000 + Math.random() * 900000);
@@ -25,7 +25,7 @@ export class CommandHandlers {
 
     //create the todo items
     const todo = {
-      todoName: command.todoName,
+      todoName: todoName,
       todoId,
       todoIsDone,
     };
@@ -34,9 +34,8 @@ export class CommandHandlers {
     return todo;
   }
 
-  async updateTodo(command: { todoId: number }) {
-    const { todoId } = command; // Destructure from command
-    const todoToUpdate = todos.get(todoId)!;
+  async updateTodo( todoId: number ) {
+     const todoToUpdate = todos.get(todoId)!;
 
     if (todos.has(todoId)) {
       if (todoToUpdate) {
@@ -48,9 +47,8 @@ export class CommandHandlers {
     return todoToUpdate;
   }
 
-  deleteTodoItem(command: { todoId: number }): void {
-    const { todoId } = command;
-    const todoToDelete = todos.get(todoId);
+  deleteTodoItem( todoId: number ): void {
+     const todoToDelete = todos.get(todoId);
 
     if (todos.has(todoId)) {
       if (todoToDelete) {
@@ -59,9 +57,8 @@ export class CommandHandlers {
     }
   }
 
-  markTodoAsDone(command: { todoId: number }) {
-    const { todoId } = command;
-    const todoToMarkDone = todos.get(todoId)!;
+  markTodoAsDone(todoId: number ) {
+     const todoToMarkDone = todos.get(todoId)!;
 
     if (todos.has(todoId)) {
       if (todoToMarkDone) {
