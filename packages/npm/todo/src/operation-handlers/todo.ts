@@ -1,7 +1,6 @@
 import * as api from "todo-api";
 import { CommandHandlers } from "../commandHandlers/commandHandlers.js";
-import { QueryHandler } from "../queryHandler/queryHandler.js";
-
+ 
 import CreateTodo from "../commands/createTodo.js";
 import DeleteTodo from "../commands/deleteTodo.js";
 import todoIsDone from "../commands/todoIsDone.js";
@@ -9,8 +8,8 @@ import updateTodo from "../commands/updateTodo.js";
 
  
 export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async () => {
-  const queryHandler = new QueryHandler();
-  return queryHandler.listTodoItems();
+  const commandHandler = new CommandHandlers();
+  return await commandHandler.listTodoItems();
 };
 
 export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (todo) => {
