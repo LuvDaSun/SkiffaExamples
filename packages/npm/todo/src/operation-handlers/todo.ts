@@ -6,7 +6,6 @@ import DeleteTodo from "../commands/deleteTodo.js";
 import todoIsDone from "../commands/todoIsDone.js";
 import updateTodo from "../commands/updateTodo.js";
 
- 
 export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async () => {
   const commandHandler = new CommandHandlers();
   return await commandHandler.listTodoItems();
@@ -49,16 +48,15 @@ export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = asy
 };
 
 export const todoItemSetDone: api.server.TodoItemSetDoneOperationHandler<{}> = async (todo) => {
-  const isDoneCommand = new todoIsDone(todo.id)
-  const isDoneHandler = new CommandHandlers()
+  const isDoneCommand = new todoIsDone(todo.id);
+  const isDoneHandler = new CommandHandlers();
 
-    const isDone = isDoneHandler.markTodoAsDone(isDoneCommand)
+  const isDone = isDoneHandler.markTodoAsDone(isDoneCommand);
 
-    const todoItem = {
-      description: isDone.todoName,
-      id: isDone.todoId,
-      done: isDone.todoIsDone,
-    };
-    return todoItem;
-    
+  const todoItem = {
+    description: isDone.todoName,
+    id: isDone.todoId,
+    done: isDone.todoIsDone,
+  };
+  return todoItem;
 };

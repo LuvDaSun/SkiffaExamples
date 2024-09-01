@@ -16,7 +16,7 @@ test("todo test scenario", async (t) => {
     todoItemSetDone: operationHandlers.todoItemSetDone,
   });
 
-  await using listener = await  api.lib.listen(server);
+  await using listener = await api.lib.listen(server);
   const baseUrl = new URL(`http://localhost:${listener.port}`);
 
   let createTodo: { id: number; description: string; done: boolean };
@@ -29,10 +29,7 @@ test("todo test scenario", async (t) => {
   });
 
   await t.test("create a todo item", async () => {
-    createTodo = await api.client.addTodoItem(
-      { description: "Go to work" },
-      { baseUrl }
-    );
+    createTodo = await api.client.addTodoItem({ description: "Go to work" }, { baseUrl });
   });
 
   await t.test("list (expect 1 item in list)", async () => {
@@ -49,7 +46,7 @@ test("todo test scenario", async (t) => {
     await api.client.modifyTodoItem(
       { id: createTodo.id },
       { description: updatedTodo },
-      { baseUrl }
+      { baseUrl },
     );
   });
 
@@ -83,5 +80,4 @@ test("todo test scenario", async (t) => {
 
     assert.deepEqual(listTodo, []);
   });
-
-  });
+});
