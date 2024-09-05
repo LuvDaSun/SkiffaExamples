@@ -1,12 +1,12 @@
 //command handler for all commands
-import { TodoItem } from "../../../../../generated/npm/todo-api/typed/types.js";
+import * as todoApi from "todo-api";
 
-const todos : Map<number,{todoName: string, todoId: number, todoIsDone: boolean}> = new Map()
+const todos: Map<number, { todoName: string, todoId: number, todoIsDone: boolean }> = new Map()
 export class CommandHandlers {
-  
 
-  async listTodoItems(): Promise<TodoItem[]> {
-    return Array.from( todos.values()).map((todo) => ({
+
+  async listTodoItems(): Promise<todoApi.types.TodoItem[]> {
+    return Array.from(todos.values()).map((todo) => ({
       id: todo.todoId,
       description: todo.todoName,
       done: todo.todoIsDone,
@@ -30,7 +30,7 @@ export class CommandHandlers {
       todoIsDone,
     };
 
-     todos.set(todoId, todo);
+    todos.set(todoId, todo);
     return todo;
   }
 
@@ -38,11 +38,11 @@ export class CommandHandlers {
     const { todoId } = command; // Destructure from command
     const todoToUpdate = todos.get(todoId)!;
 
-    if ( todos.has(todoId)) {
+    if (todos.has(todoId)) {
       if (todoToUpdate) {
         todoToUpdate.todoName = "Go to the gym";
 
-         todos.set(todoId, todoToUpdate);
+        todos.set(todoId, todoToUpdate);
       }
     }
     return todoToUpdate;
@@ -52,9 +52,9 @@ export class CommandHandlers {
     const { todoId } = command;
     const todoToDelete = todos.get(todoId);
 
-    if ( todos.has(todoId)) {
+    if (todos.has(todoId)) {
       if (todoToDelete) {
-         todos.delete(todoId);
+        todos.delete(todoId);
       }
     }
   }
@@ -63,7 +63,7 @@ export class CommandHandlers {
     const { todoId } = command;
     const todoToMarkDone = todos.get(todoId)!;
 
-    if ( todos.has(todoId)) {
+    if (todos.has(todoId)) {
       if (todoToMarkDone) {
         todoToMarkDone.todoIsDone = true;
         todos.set(todoId, todoToMarkDone);
