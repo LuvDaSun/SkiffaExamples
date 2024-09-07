@@ -1,12 +1,12 @@
 //command handler for all commands
 import * as todoApi from "todo-api";
 
-const todos: Map<number, { todoName: string, todoId: number, todoIsDone: boolean }> = new Map()
-export class CommandHandlers {
+export class todoService {
 
+  private todos: Map<number, { todoName: string, todoId: number, todoIsDone: boolean }> = new Map();
 
   async listTodoItems(): Promise<todoApi.types.TodoItem[]> {
-    return Array.from(todos.values()).map((todo) => ({
+    return Array.from(this.todos.values()).map((todo) => ({
       id: todo.todoId,
       description: todo.todoName,
       done: todo.todoIsDone,
@@ -14,7 +14,7 @@ export class CommandHandlers {
   }
 
 
-  async createTodo(  todoName: string ) {
+  async createTodo(todoName: string) {
     //generate a unique id for each todo
     const generateId = (): number => {
       return Math.floor(100000 + Math.random() * 900000);
@@ -30,40 +30,40 @@ export class CommandHandlers {
       todoIsDone,
     };
 
-    todos.set(todoId, todo);
+    this.todos.set(todoId, todo);
     return todo;
   }
 
-  async updateTodo( todoId: number ) {
-     const todoToUpdate = todos.get(todoId)!;
+  async updateTodo(todoId: number) {
+    const todoToUpdate = this.todos.get(todoId)!;
 
-    if (todos.has(todoId)) {
+    if (this.todos.has(todoId)) {
       if (todoToUpdate) {
         todoToUpdate.todoName = "Go to the gym";
 
-        todos.set(todoId, todoToUpdate);
+        this.todos.set(todoId, todoToUpdate);
       }
     }
     return todoToUpdate;
   }
 
-  deleteTodoItem( todoId: number ): void {
-     const todoToDelete = todos.get(todoId);
+  deleteTodoItem(todoId: number): void {
+    const todoToDelete = this.todos.get(todoId);
 
-    if (todos.has(todoId)) {
+    if (this.todos.has(todoId)) {
       if (todoToDelete) {
-        todos.delete(todoId);
+        this.todos.delete(todoId);
       }
     }
   }
 
-  markTodoAsDone(todoId: number ) {
-     const todoToMarkDone = todos.get(todoId)!;
+  markTodoAsDone(todoId: number) {
+    const todoToMarkDone = this.todos.get(todoId)!;
 
-    if (todos.has(todoId)) {
+    if (this.todos.has(todoId)) {
       if (todoToMarkDone) {
         todoToMarkDone.todoIsDone = true;
-        todos.set(todoId, todoToMarkDone);
+        this.todos.set(todoId, todoToMarkDone);
       }
     }
 
