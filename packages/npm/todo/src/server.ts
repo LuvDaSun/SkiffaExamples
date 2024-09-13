@@ -1,8 +1,12 @@
 import * as path from "path";
 import * as shared from "shared";
 import * as api from "todo-api";
-import * as operationHandlers from "./operation-handlers.js";
+import { createContext } from "./context.js";
+import { addTodoItem, deleteTodoItem, ListTodoItems, modifyTodoItem, todoItemSetDone } from "./operation-handlers/todo.js";
 import { projectRoot } from "./root.js";
+
+
+const context = createContext()
 
 main();
 
@@ -12,7 +16,11 @@ async function main() {
   const server = new api.server.Server();
 
   // register all operations
-  server.registerOperations(operationHandlers);
+  server.registerAddTodoItemOperation(addTodoItem(context));
+  server.registerDeleteTodoItemOperation(deleteTodoItem(context))
+  server.registerListTodoItemsOperation(ListTodoItems(context))
+  server.registerModifyTodoItemOperation(modifyTodoItem(context))
+  server.registerTodoItemSetDoneOperation(todoItemSetDone(context))
 
   // serve some static files
   server.registerMiddleware(

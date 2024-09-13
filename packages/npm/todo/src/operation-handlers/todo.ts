@@ -1,15 +1,15 @@
 import * as api from "todo-api";
-import { todoService } from "../services/services.js";
+import { Context } from "../context.js";
 
-const TodoService = new todoService();
 
-export const ListTodoItems: api.server.ListTodoItemsOperationHandler<{}> = async () => {
 
-  return await TodoService.listTodoItems();
+export const ListTodoItems = (context: Context): api.server.ListTodoItemsOperationHandler<{}> => async () => {
+
+  return await context.todo.listTodoItems();
 };
 
-export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (todo) => {
-  const createdTodo = await TodoService.createTodo(todo.description);
+export const addTodoItem = (context: Context): api.server.AddTodoItemOperationHandler<{}> => async (todo) => {
+  const createdTodo = await context.todo.createTodo(todo.description);
 
   const todoItem = {
     description: createdTodo.todoName,
@@ -20,9 +20,9 @@ export const addTodoItem: api.server.AddTodoItemOperationHandler<{}> = async (to
   return todoItem;
 };
 
-export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = async (todo) => {
+export const modifyTodoItem = (context: Context): api.server.ModifyTodoItemOperationHandler<{}> => async (todo) => {
 
-  const updatedTodo = await TodoService.updateTodo(todo.id);
+  const updatedTodo = await context.todo.updateTodo(todo.id);
 
   const todoItem = {
     description: updatedTodo.todoName,
@@ -32,14 +32,14 @@ export const modifyTodoItem: api.server.ModifyTodoItemOperationHandler<{}> = asy
   return todoItem;
 };
 
-export const deleteTodoItem: api.server.DeleteTodoItemOperationHandler<{}> = async (todo) => {
+export const deleteTodoItem = (context: Context): api.server.DeleteTodoItemOperationHandler<{}> => async (todo) => {
 
-  TodoService.deleteTodoItem(todo.id);
+  context.todo.deleteTodoItem(todo.id);
 };
 
-export const todoItemSetDone: api.server.TodoItemSetDoneOperationHandler<{}> = async (todo) => {
+export const todoItemSetDone = (context: Context): api.server.TodoItemSetDoneOperationHandler<{}> => async (todo) => {
 
-  const isDone = TodoService.markTodoAsDone(todo.id);
+  const isDone = context.todo.markTodoAsDone(todo.id);
 
   const todoItem = {
     description: isDone.todoName,
