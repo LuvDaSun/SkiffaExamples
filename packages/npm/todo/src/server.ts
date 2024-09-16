@@ -2,25 +2,30 @@ import * as path from "path";
 import * as shared from "shared";
 import * as api from "todo-api";
 import { createContext } from "./context.js";
-import { addTodoItem, deleteTodoItem, ListTodoItems, modifyTodoItem, todoItemSetDone } from "./operation-handlers/todo.js";
+import {
+  addTodoItem,
+  deleteTodoItem,
+  ListTodoItems,
+  modifyTodoItem,
+  todoItemSetDone,
+} from "./operation-handlers/todo.js";
 import { projectRoot } from "./root.js";
-
-
-const context = createContext()
 
 main();
 
 // entrypoint for the server
 async function main() {
+  const context = createContext();
+
   // create the server
   const server = new api.server.Server();
 
   // register all operations
   server.registerAddTodoItemOperation(addTodoItem(context));
-  server.registerDeleteTodoItemOperation(deleteTodoItem(context))
-  server.registerListTodoItemsOperation(ListTodoItems(context))
-  server.registerModifyTodoItemOperation(modifyTodoItem(context))
-  server.registerTodoItemSetDoneOperation(todoItemSetDone(context))
+  server.registerDeleteTodoItemOperation(deleteTodoItem(context));
+  server.registerListTodoItemsOperation(ListTodoItems(context));
+  server.registerModifyTodoItemOperation(modifyTodoItem(context));
+  server.registerTodoItemSetDoneOperation(todoItemSetDone(context));
 
   // serve some static files
   server.registerMiddleware(

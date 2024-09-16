@@ -1,14 +1,13 @@
-import { todoService } from "./services/services.js";
+import { TodoService } from "./services.js";
 
 export interface Context {
-    todo: todoService
+  todo: TodoService;
 }
-
 
 export const createContext = (): Context => {
-    const TodoService = new todoService()
+  const todo = new TodoService();
 
-    return {
-        todo: TodoService
-    }
-}
+  return {
+    todo,
+  };
+};

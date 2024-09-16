@@ -2,20 +2,26 @@ import * as assert from "node:assert";
 import test from "node:test";
 import * as api from "todo-api";
 import { createContext } from "../context.js";
-import { addTodoItem, deleteTodoItem, ListTodoItems, modifyTodoItem, todoItemSetDone } from "./todo.js";
+import {
+  addTodoItem,
+  deleteTodoItem,
+  ListTodoItems,
+  modifyTodoItem,
+  todoItemSetDone,
+} from "./todo.js";
 
-const context = createContext()
 test("todo test scenario", async () => {
+  const context = createContext();
+
   // Start the server once
   const server = new api.server.Server();
 
   // Register the operations
-  server.registerAddTodoItemOperation(addTodoItem(context))
-  server.registerListTodoItemsOperation(ListTodoItems(context))
-  server.registerModifyTodoItemOperation(modifyTodoItem(context))
-  server.registerDeleteTodoItemOperation(deleteTodoItem(context))
-  server.registerTodoItemSetDoneOperation(todoItemSetDone(context))
-
+  server.registerAddTodoItemOperation(addTodoItem(context));
+  server.registerListTodoItemsOperation(ListTodoItems(context));
+  server.registerModifyTodoItemOperation(modifyTodoItem(context));
+  server.registerDeleteTodoItemOperation(deleteTodoItem(context));
+  server.registerTodoItemSetDoneOperation(todoItemSetDone(context));
 
   await using listener = await api.lib.listen(server);
   const baseUrl = new URL(`http://localhost:${listener.port}`);

@@ -1,9 +1,8 @@
 //command handler for all commands
 import * as todoApi from "todo-api";
 
-export class todoService {
-
-  private todos: Map<number, { todoName: string, todoId: number, todoIsDone: boolean }> = new Map();
+export class TodoService {
+  private todos: Map<number, { todoName: string; todoId: number; todoIsDone: boolean }> = new Map();
 
   async listTodoItems(): Promise<todoApi.types.TodoItem[]> {
     return Array.from(this.todos.values()).map((todo) => ({
@@ -12,7 +11,6 @@ export class todoService {
       done: todo.todoIsDone,
     }));
   }
-
 
   async createTodo(todoName: string) {
     //generate a unique id for each todo
