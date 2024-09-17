@@ -32,7 +32,7 @@
       "editor.defaultFormatter": "rust-lang.rust-analyzer",
     },
     "[typescript]": {
-      "editor.defaultFormatter": "vscode.typescript-language-features"
+      "editor.defaultFormatter": "vscode.typescript-language-features",
     },
   },
   "extensions": {
