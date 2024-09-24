@@ -10,15 +10,15 @@
     "test": "node --test ./transpiled/**/*.test.js"
   },
   "dependencies": {
-    "@types/node": "^18.19.45",
+    "@types/node": "^18.19.50",
     "reverse-api": "^0.1.0",
     "shared": "^0.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@tsconfig/node18": "^18.2.4",
-    "rollup": "^4.21.0",
-    "typescript": "^5.5.4"
+    "rollup": "^4.22.4",
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": ">=18"
