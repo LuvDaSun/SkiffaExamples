@@ -10,11 +10,12 @@
   "scripts": {
     "spelling": "cspell",
     "formatting": "prettier --check *",
-    "generate": "node ./scripts/generate.mjs",
-    "initialize": "node ./scripts/initialize.mjs"
+    "generate": "$npm_node_execpath ./scripts/generate.mjs",
+    "build": "$npm_execpath run --workspaces --if-present build",
+    "pretest": "$npm_execpath run --workspaces --if-present pretest",
+    "test": "$npm_node_execpath --test packages/npm/*/transpiled/**/*.test.js"
   },
   "devDependencies": {
-    "@skiffa/generator": "^0.13.20",
     "cspell": "^8.14.2",
     "prettier": "^3.3.3"
   }

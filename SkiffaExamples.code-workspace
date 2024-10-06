@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": ".github/workflows",
+      "path": ".github/workflows",
+    },
+    {
       "name": "specifications",
       "path": "specifications",
     },
@@ -15,6 +19,10 @@
     {
       "name": "npm/todo",
       "path": "packages/npm/todo",
+    },
+    {
+      "name": "npm/appsignal",
+      "path": "packages/npm/appsignal",
     },
   ],
   "settings": {

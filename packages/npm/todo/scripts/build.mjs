@@ -9,7 +9,7 @@ const projectRoot = path.resolve(dirname, "..");
 
 const options = { shell: true, stdio: "inherit", env: process.env, cwd: projectRoot };
 
-cp.execFileSync("npm", ["--workspace", "reverse-api", "run", "build"], options);
+cp.execFileSync(process.env.npm_execpath, ["--workspace", "todo-api", "run", "build"], options);
 
 cp.execFileSync("tsc", ["--build"], options);
 

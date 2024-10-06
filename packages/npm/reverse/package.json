@@ -2,12 +2,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepack": "node ./scripts/build.js",
-    "pretest": "node ./scripts/build.js",
-    "prestart": "node ./scripts/build.js",
-    "start": "node transpiled/server.js",
-    "build": "node ./scripts/build.js",
-    "test": "node --test ./transpiled/**/*.test.js"
+    "prepack": "tsc",
+    "pretest": "tsc",
+    "prestart": "tsc",
+    "start": "$npm_node_execpath transpiled/server.js",
+    "build": "tsc",
+    "test": "$npm_node_execpath --test ./transpiled/**/*.test.js"
   },
   "dependencies": {
     "@types/node": "^18.19.45",
@@ -15,9 +15,7 @@
     "shared": "^0.1.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
     "@tsconfig/node18": "^18.2.4",
-    "rollup": "^4.21.0",
     "typescript": "^5.5.4"
   },
   "engines": {
