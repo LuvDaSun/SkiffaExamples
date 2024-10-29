@@ -1,0 +1,16 @@
+openapi: 3.0.2
+
+info:
+  title: A very minimal API
+  description: |-
+    This api does nothing, and can be used for testing
+  version: 0.1.0
+
+paths:
+  /noop:
+    get:
+      operationId: noop
+      description: Do nothing
+      responses:
+        "204":
+          description: No Content

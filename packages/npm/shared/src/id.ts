@@ -2,7 +2,7 @@ let lastId = Date.now();
 
 export function nextId() {
   const id = ++lastId;
-  return id
+  return id;
 }
 
 export function nextStringId(prefix: string) {

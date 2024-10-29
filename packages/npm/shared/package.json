@@ -20,7 +20,7 @@
     "pretest": "tsc --build",
     "prestart": "tsc --build",
     "build": "tsc --build",
-    "test": "node --test ./transpiled/**/*.test.js"
+    "test": "$npm_node_execpath --test ./transpiled/**/*.test.js"
   },
   "dependencies": {
     "@types/node": "^18.19.45"

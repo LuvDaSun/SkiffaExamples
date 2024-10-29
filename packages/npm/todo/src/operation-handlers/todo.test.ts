@@ -26,7 +26,7 @@ test("todo test scenario", async () => {
   await using listener = await api.lib.listen(server);
   const baseUrl = new URL(`http://localhost:${listener.port}`);
 
-  let id: number
+  let id: number;
 
   await test("list (expect empty list)", async () => {
     const listTodo = await api.client.listTodoItems({ baseUrl });

@@ -9,12 +9,17 @@ const workspaceRoot = path.resolve(dirname, "..");
 
 const options = { shell: true, stdio: "inherit", env: process.env };
 
-const names = ["reverse-api", "todo-api"];
+const names = ["reverse-api", "todo-api", "noop-api"];
 
 for (const name of names) {
   cp.execFileSync(
-    "skiffa-generator",
+    "npx",
     [
+      "--yes",
+      "--package",
+      "@skiffa/generator@0.13.20",
+      "--",
+      "skiffa-generator",
       "package",
       path.resolve(workspaceRoot, "specifications", `${name}.yaml`),
       "--package-directory",
@@ -26,7 +31,4 @@ for (const name of names) {
     ],
     options,
   );
-
-  cp.execFileSync(process.env.npm_execpath, ["--workspace", name, "install"], options);
-  cp.execFileSync(process.env.npm_execpath, ["--workspace", name, "run", "build"], options);
 }

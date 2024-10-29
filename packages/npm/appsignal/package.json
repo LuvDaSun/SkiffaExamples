@@ -1,7 +1,6 @@
 {
-  "name": "todo",
-  "version": "1.0.0",
-  "type": "module",
+  "private": true,
+  "type": "commonjs",
   "scripts": {
     "prepack": "$npm_node_execpath ./scripts/build.mjs",
     "pretest": "$npm_node_execpath ./scripts/build.mjs",
@@ -10,13 +9,21 @@
     "build": "$npm_node_execpath ./scripts/build.mjs",
     "test": "$npm_node_execpath --test ./transpiled/**/*.test.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "rollup": "^4.20.0",
-    "todo-api": "^0.1.0",
+    "@appsignal/nodejs": "^3.5.0",
+    "@skiffa/appsignal": "^0.3.3",
+    "@types/node": "^18.19.45",
+    "msecs": "^1.0.4",
+    "noop-api": "^0.1.0",
+    "shared": "^0.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@tsconfig/node18": "^18.2.4",
+    "rollup": "^4.21.0",
     "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
